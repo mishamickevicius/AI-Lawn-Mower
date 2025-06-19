@@ -18,13 +18,16 @@ def getColours(cls_num):
 
 
 while True:
+    print("Video read starting")
     ret, frame = videoCap.read()
     if not ret:
         continue
+    print("Tracking Starting")
     results = yolo.track(frame, stream=True)
 
 
     for result in results:
+        print("Got results")
         # get the classes names
         classes_names = result.names
 

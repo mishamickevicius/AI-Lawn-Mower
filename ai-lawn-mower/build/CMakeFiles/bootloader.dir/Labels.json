@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}

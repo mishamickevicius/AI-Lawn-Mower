@@ -1,0 +1,2 @@
+source /home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader/gdbinit/symbols
+source /home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader/gdbinit/connect

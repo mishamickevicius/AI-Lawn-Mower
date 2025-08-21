@@ -1,0 +1,19 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPath": "/home/misha/esp/v5.4.1/esp-idf",
+  "idf.pythonInstallPath": "/home/misha/Desktop/env/bin/python3.12",
+  "idf.openOcdConfigs": [
+    "board/esp32s3-builtin.cfg"
+  ],
+  "idf.port": "/dev/ttyACM0",
+  "idf.toolsPath": "/home/misha/.espressif",
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32s3"
+  },
+  "idf.flashType": "UART",
+  "files.associations": {
+    "gpio_test.h": "c",
+    "gpio.h": "c",
+    "freertos.h": "c"
+  }
+}

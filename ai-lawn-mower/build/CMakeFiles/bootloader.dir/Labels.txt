@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/CMakeFiles/bootloader
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/CMakeFiles/bootloader.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/CMakeFiles/bootloader-complete.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/misha/Desktop/Projects/AI-Lawn-Mower/ai-lawn-mower/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

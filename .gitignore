@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+build/
+sdkconfig
+sdkconfig.old
+sdkconfig.defaults
+sdkconfig.defaults.old
+esp-idf/
+.vscode/
+.history/
+.DS_Store
+*.pyc
+__pycache__/
+.env
+

@@ -395,7 +395,37 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 82.55) (xy 91.44 78.74)
+			(xy 121.92 59.69) (xy 128.27 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00487d48-2920-4083-935c-97426c2cb054")
+	)
+	(wire
+		(pts
+			(xy 109.22 58.42) (xy 102.87 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06b4d462-87ad-47f2-95de-9553e73a8396")
+	)
+	(wire
+		(pts
+			(xy 102.87 58.42) (xy 102.87 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b290f35-1469-456f-b823-15e063c4d93c")
+	)
+	(wire
+		(pts
+			(xy 102.87 85.09) (xy 102.87 81.28)
 		)
 		(stroke
 			(width 0)
@@ -405,7 +435,17 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 85.09) (xy 91.44 85.09)
+			(xy 161.29 85.09) (xy 154.94 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b163b45-72d5-40a0-8f29-842cefd10458")
+	)
+	(wire
+		(pts
+			(xy 109.22 87.63) (xy 102.87 87.63)
 		)
 		(stroke
 			(width 0)
@@ -415,7 +455,27 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 82.55) (xy 91.44 82.55)
+			(xy 154.94 57.15) (xy 154.94 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22eefc90-fdde-4c0d-9d5d-a828a1d03331")
+	)
+	(wire
+		(pts
+			(xy 154.94 59.69) (xy 154.94 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d2827f8-a674-45ab-924a-a3a7064192c9")
+	)
+	(wire
+		(pts
+			(xy 109.22 85.09) (xy 102.87 85.09)
 		)
 		(stroke
 			(width 0)
@@ -425,7 +485,57 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 85.09) (xy 91.44 88.9)
+			(xy 161.29 59.69) (xy 154.94 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "315b116e-5a26-40eb-aeb6-b92dc6c16f0e")
+	)
+	(wire
+		(pts
+			(xy 161.29 57.15) (xy 154.94 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32104383-edea-4a0e-9a65-94d3f5f5e309")
+	)
+	(wire
+		(pts
+			(xy 102.87 60.96) (xy 102.87 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "441b2c26-386e-404e-bf65-d94817c7b43a")
+	)
+	(wire
+		(pts
+			(xy 109.22 60.96) (xy 102.87 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "491bf795-c38d-4f51-9280-16b963b28e05")
+	)
+	(wire
+		(pts
+			(xy 121.92 86.36) (xy 128.27 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4dbfc7bf-70c0-457a-b80f-4612fea5fa82")
+	)
+	(wire
+		(pts
+			(xy 102.87 87.63) (xy 102.87 91.44)
 		)
 		(stroke
 			(width 0)
@@ -433,9 +543,203 @@
 		)
 		(uuid "64f3b271-5be6-483b-9bfa-8332d176b80d")
 	)
+	(wire
+		(pts
+			(xy 173.99 86.36) (xy 180.34 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ea42851-548b-4780-958d-d5422306f3a4")
+	)
+	(wire
+		(pts
+			(xy 173.99 58.42) (xy 180.34 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ac4df95-4daa-4688-b361-2b499bb47087")
+	)
+	(wire
+		(pts
+			(xy 154.94 85.09) (xy 154.94 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3d01b8f-b7ac-4263-96fb-89ead1399da7")
+	)
+	(wire
+		(pts
+			(xy 154.94 87.63) (xy 154.94 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de480e5c-0e82-4c8f-8a78-fab546dfbac0")
+	)
+	(wire
+		(pts
+			(xy 161.29 87.63) (xy 154.94 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa8a53f1-5543-4eb1-aae1-bab13b386ca6")
+	)
+	(global_label "GPIO3"
+		(shape input)
+		(at 180.34 86.36 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "057dddc5-7a47-4ac8-8c46-2c2e3eb3b277")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 189.01 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "GPIO0" ""
+			(at 180.34 90.2018 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO1"
+		(shape input)
+		(at 128.27 59.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "82b54987-f2a1-4167-a3d2-1b7085222f0e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 136.94 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "GPIO0" ""
+			(at 128.27 63.5318 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO0"
+		(shape input)
+		(at 128.27 86.36 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9f43a983-74d0-479b-9c38-0b0c7b106936")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 136.94 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "GPIO0" ""
+			(at 128.27 90.2018 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GPIO2"
+		(shape input)
+		(at 180.34 58.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d1a25079-7eb1-4abb-a65f-795586de76d7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 189.01 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "GPIO0" ""
+			(at 180.34 62.2618 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(symbol
 		(lib_id "power:GND")
-		(at 91.44 88.9 0)
+		(at 102.87 64.77 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -444,9 +748,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "0d6dcb61-da4c-407b-af0d-f0066486a91b")
-		(property "Reference" "#PWR02"
-			(at 91.44 95.25 0)
+		(uuid "0348ef21-845e-40c8-bf49-f66bd0d1d3da")
+		(property "Reference" "#PWR07"
+			(at 102.87 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -457,7 +761,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 91.44 93.98 0)
+			(at 102.87 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -467,7 +771,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 91.44 88.9 0)
+			(at 102.87 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -478,7 +782,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 88.9 0)
+			(at 102.87 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -489,7 +793,85 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 91.44 88.9 0)
+			(at 102.87 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "da685e63-ca2c-4dd7-99d8-462ec9edb904")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 102.87 91.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0d6dcb61-da4c-407b-af0d-f0066486a91b")
+		(property "Reference" "#PWR02"
+			(at 102.87 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 102.87 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 102.87 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -513,7 +895,7 @@
 	)
 	(symbol
 		(lib_id "Custom_symbols:IR_Sensor_FC51")
-		(at 104.14 80.01 0)
+		(at 167.64 82.55 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -522,9 +904,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "813eb173-8cc0-4b93-b592-41e8e4f132d0")
-		(property "Reference" "U1"
-			(at 104.14 78.74 0)
+		(uuid "375a600b-3014-467b-9db9-36205c921abc")
+		(property "Reference" "U5"
+			(at 167.64 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -534,7 +916,7 @@
 			)
 		)
 		(property "Value" ""
-			(at 104.14 80.01 0)
+			(at 167.64 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -544,7 +926,7 @@
 			)
 		)
 		(property "Footprint" "Flying fish IR sensor PCB aka FC51"
-			(at 104.14 80.01 0)
+			(at 167.64 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -555,7 +937,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 104.14 80.01 0)
+			(at 167.64 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -566,7 +948,329 @@
 			)
 		)
 		(property "Description" ""
-			(at 104.14 80.01 0)
+			(at 167.64 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "2fe0627a-8c9b-4f7d-880d-fc6a5890bcfb")
+		)
+		(pin "2"
+			(uuid "06ea72fa-d3f5-4362-ab60-11c2bc3d7a33")
+		)
+		(pin "1"
+			(uuid "d67523ba-a116-4af3-8d35-1db31d938258")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 154.94 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3bd0193f-f264-4c79-949e-d61aa806769c")
+		(property "Reference" "#PWR010"
+			(at 154.94 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 154.94 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 154.94 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2752d8e4-f8a6-45a8-9a77-9220a81556b4")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Custom_symbols:IR_Sensor_FC51")
+		(at 115.57 55.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5021ed68-ced4-4456-91c7-099196684dc5")
+		(property "Reference" "U3"
+			(at 115.57 54.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 115.57 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Flying fish IR sensor PCB aka FC51"
+			(at 115.57 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 115.57 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "d5e0e280-e502-4f76-99c0-fb3aaf13011d")
+		)
+		(pin "2"
+			(uuid "9fb6d309-0bde-4917-87e5-a384524bffc2")
+		)
+		(pin "1"
+			(uuid "ea2a4572-fa41-4fef-ab50-34ca38629b35")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 154.94 91.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6627371e-5ac9-4c47-92de-88df0bb5395e")
+		(property "Reference" "#PWR011"
+			(at 154.94 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 154.94 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 154.94 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b79d0702-8d5c-4446-a783-3db698a12bea")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Custom_symbols:IR_Sensor_FC51")
+		(at 115.57 82.55 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "813eb173-8cc0-4b93-b592-41e8e4f132d0")
+		(property "Reference" "U1"
+			(at 115.57 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 115.57 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Flying fish IR sensor PCB aka FC51"
+			(at 115.57 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 115.57 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -595,8 +1299,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 91.44 78.74 0)
+		(lib_id "Custom_symbols:IR_Sensor_FC51")
+		(at 167.64 54.61 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -605,10 +1309,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "c5cab986-55c3-4eee-b089-ddb558e67e7e")
-		(property "Reference" "#PWR01"
-			(at 91.44 82.55 0)
-			(hide yes)
+		(uuid "9f5c32c3-f61f-4a97-88ab-a24e2a83e395")
+		(property "Reference" "U4"
+			(at 167.64 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -617,8 +1320,8 @@
 				)
 			)
 		)
-		(property "Value" "+3.3V"
-			(at 91.44 73.66 0)
+		(property "Value" ""
+			(at 167.64 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -627,8 +1330,8 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 91.44 78.74 0)
+		(property "Footprint" "Flying fish IR sensor PCB aka FC51"
+			(at 167.64 54.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -639,7 +1342,91 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 78.74 0)
+			(at 167.64 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 167.64 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "2afe9784-b708-40d1-b74f-c5b5b7705b61")
+		)
+		(pin "2"
+			(uuid "0db800bc-a5ac-406e-b7b3-a3aa03ab95be")
+		)
+		(pin "1"
+			(uuid "10f1a8a4-d472-40a6-bb28-5fba6ad7c621")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 102.87 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c5cab986-55c3-4eee-b089-ddb558e67e7e")
+		(property "Reference" "#PWR01"
+			(at 102.87 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 102.87 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -650,7 +1437,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 91.44 78.74 0)
+			(at 102.87 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -667,6 +1454,240 @@
 			(project "KiCad_Lawn_Mower"
 				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 102.87 54.61 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dd41e0ea-037e-4796-b11d-e4c52a73cbf2")
+		(property "Reference" "#PWR06"
+			(at 102.87 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 102.87 49.53 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 102.87 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2f9bde07-c0e1-41fe-a5f8-062d93133900")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 154.94 53.34 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dd4f687b-0881-46f1-9df9-5a48301438d5")
+		(property "Reference" "#PWR08"
+			(at 154.94 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 154.94 48.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 154.94 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8e37496b-9517-4407-b7c2-18c0d9007ef9")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 154.94 63.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ed1bcf43-4e59-4f67-a448-c6713baaacb7")
+		(property "Reference" "#PWR09"
+			(at 154.94 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 154.94 68.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 154.94 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "be3c8fc0-a2a0-4c38-9847-715208ecd6bd")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)

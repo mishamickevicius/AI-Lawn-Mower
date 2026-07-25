@@ -2,9 +2,145 @@
 	(version 20260306)
 	(generator "eeschema")
 	(generator_version "10.0")
-	(uuid 0806a8c0-bc45-48da-a5f3-b40d8c386964)
+	(uuid "0806a8c0-bc45-48da-a5f3-b40d8c386964")
 	(paper "A4")
 	(lib_symbols)
+	(rectangle
+		(start 31.75 29.21)
+		(end 71.12 48.26)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "7dfb5deb-01d3-4ed1-90ae-07c92d247bf9")
+	)
+	(rectangle
+		(start 124.46 81.28)
+		(end 182.88 118.11)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "b82a40d5-3947-4e8b-8be4-d59b50a90d92")
+	)
+	(text "IR Sensor\n"
+		(exclude_from_sim no)
+		(at 51.816 39.116 0)
+		(effects
+			(font
+				(size 5.08 5.08)
+			)
+		)
+		(uuid "5e73e620-4974-48fc-850b-8186d6e7098c")
+	)
+	(text "ESP32-S3"
+		(exclude_from_sim no)
+		(at 153.67 98.806 0)
+		(effects
+			(font
+				(size 6.985 6.985)
+			)
+		)
+		(uuid "c3ea1426-b17e-4a94-9d02-86d99484c810")
+	)
+	(sheet
+		(at 31.75 29.21)
+		(size 39.37 19.05)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "59b9aee8-2e22-46e8-92f2-019218b8f401")
+		(property "Sheetname" "IR Sensor Schematic"
+			(at 31.75 28.4984 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "ir_sensor_schematic.kicad_sch"
+			(at 31.75 48.8446 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 124.46 81.28)
+		(size 58.42 36.83)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "c4f33eb8-2375-453d-950a-d6c12990af3d")
+		(property "Sheetname" "ESP32 Pinout"
+			(at 124.46 80.5684 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "esp32.kicad_sch"
+			(at 124.46 118.6946 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964"
+					(page "3")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

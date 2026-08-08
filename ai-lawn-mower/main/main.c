@@ -24,10 +24,8 @@ void app_main(void)
     ESP_LOGI(TAG, "Main program starting");
     esp_err_t ret; // Return var
 
-    ESP_ERROR_CHECK(init_pwm_module());
-
-    while (1) {
-        ESP_LOGI(TAG, "PWM Should be active");
-        vTaskDelay(pdMS_TO_TICKS(1000));
+    while(true)
+    {
+        
     }
 }

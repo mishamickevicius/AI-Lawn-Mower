@@ -9,61 +9,10 @@
 
 static const char* TAG = "IrSensor";
 
-#define MAX_NUM_OF_SENSORS 5
+
 #define ESP_INTR_FLAG_DEFAULT 0
 #define IR_SENSOR_DEBOUNCE_MS 50
 
-/*
-Basic idea: Have a array of scructs where each scruct is an ir sensor
-and have the helper functions (in this file) have the array pointer 
-as a param and handle the array inside. 
-
-Ideas:
-1. Have a functions that initilizes the array of sensors
-2. Have a function that goes through the array and initilizes the GPIO pins
-using gpio_driver
-3. Have the task and ISR functionallity here
-*/
-
-// Remember to check for NULL after calling this function
-ir_sensor_data_t* create_ir_sensor_array(int numOfSensors) // Max 5 Sensors
-{
-    // Check for limit
-    if (numOfSensors > MAX_NUM_OF_SENSORS || numOfSensors <= 0) {
-        return NULL;
-    }
-    // Allocate memory on heap for array
-    ir_sensor_data_t* arr = (ir_sensor_data_t*)malloc(numOfSensors * sizeof(ir_sensor_data_t));
-
-    // Check if memory was allocated
-    if (arr == NULL) {
-        ESP_LOGE(TAG, "create_ir_sensor_array could not allocate memory");
-        return NULL;
-    }
-
-    // Valid GPIO pins
-    int valid_pins[5] = {35, 36, 37, 38, 39};
-
-    // Fill array with pin nums
-    for (int i = 0; i < numOfSensors; i++) {
-        arr[i].pinNum = valid_pins[i];
-        arr[i].currentState = IR_STATE_INIT;
-        arr[i].lastLevelChangeTime = 0; 
-        arr[i].previousLevel = 0;
-
-
-        // Init gpio pins to input mode
-
-        esp_err_t ret = set_gpio_to_input(valid_pins[i], false, true, GPIO_INTR_ANYEDGE);
-
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "Error has occured with gpio pin init \n Error: %s\n", esp_err_to_name(ret));
-            return NULL;
-        }
-    }
-
-    return arr; 
-}
 
 
 /* 
@@ -79,8 +28,6 @@ static QueueHandle_t sIrSensorEvtQueue = NULL;
 // This stores the handle(indentifier) of the FreeRTOS task that processes events
 static TaskHandle_t sIrSensorTaskHandle = NULL;
 
-// Pointer to the array of pinNums
-static ir_sensor_data_t sIrSensorsData[MAX_NUM_OF_SENSORS];
 
 // Stores the number of pins
 static size_t sNumIrSensorsInternal = 0;

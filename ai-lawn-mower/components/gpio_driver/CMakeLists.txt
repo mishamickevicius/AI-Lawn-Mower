@@ -13,6 +13,7 @@ idf_component_register(
     REQUIRES
         "esp_driver_gpio"    # For ESP-IDF's GPIO API (gpio_set_level, gpio_config, etc.)
         "freertos"  # If you use FreeRTOS types or functions directly in gpio_test.c
+        "driver"
         # If gpio_test.c used esp_log for logging, you would add:
         # esp_log
 )

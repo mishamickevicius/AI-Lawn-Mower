@@ -15,5 +15,7 @@
     "gpio_test.h": "c",
     "gpio.h": "c",
     "freertos.h": "c"
-  }
+  },
+  "idf.currentSetup": "C:\\esp\\.espressif\\v6.0.2\\esp-idf",
+  "idf.portWin": "COM4"
 }

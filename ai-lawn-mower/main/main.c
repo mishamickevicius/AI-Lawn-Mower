@@ -7,12 +7,10 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 #include "driver/gpio.h"
-#include "driver/i2c_master.h"
 
 // My components
 #include "gpio_test.h"
 #include "ir_sensor.h"
-#include "accelerometer.h"
 #include "motor_control.h"
 
 // My Macros

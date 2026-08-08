@@ -1,11 +1,11 @@
 # Register the 'main' component
 idf_component_register(
     # Only main.c is compiled by the 'main' component now.
-    # gpio_test.c is handled by the gpio_driver component.
+    # gpio_driver.c is handled by the gpio_driver component.
     SRCS "main.c"
 
     # Any include directories for headers *specific to main*.
-    # If main.c includes "gpio_test.h", it will find it because of the REQUIRES below.
+    # If main.c includes "gpio_driver.h", it will find it because of the REQUIRES below.
     # If main.c has its own main.h in the same directory, you can use "."
     INCLUDE_DIRS "."
 

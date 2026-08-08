@@ -9,7 +9,7 @@
 #include "driver/gpio.h"
 
 // My components
-#include "gpio_test.h"
+#include "gpio_driver.h"
 #include "ir_sensor.h"
 #include "motor_control.h"
 

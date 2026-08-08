@@ -1,7 +1,7 @@
 #include "ir_sensor.h"
 #include "esp_log.h"
 #include "driver/gpio.h"
-#include "gpio_test.h"
+#include "gpio_driver.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"

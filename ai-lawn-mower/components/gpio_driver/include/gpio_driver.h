@@ -1,5 +1,5 @@
-#ifndef GPIO_TEST_H
-#define GPIO_TEST_H
+#ifndef GPIO_DRIVER_H
+#define GPIO_DRIVER_H
 
 #include "esp_err.h"
 #include "driver/gpio.h"

@@ -26,6 +26,12 @@ Standard GPIO Output model:
 // Returns 1 if successful. 0 otherwise;
 esp_err_t set_gpio(int pinNum, int value)
 {
+    // Check if GPIO pin is valid
+    if (!GPIO_IS_VALID_GPIO(pinNum)) {
+        ESP_LOGE("GPIO_DRIVER", "Invalid GPIO pin number: %d", pinNum);
+        return ESP_ERR_INVALID_ARG;
+    }
+
    esp_err_t ret = gpio_set_level(pinNum, value);
    // Check for errors
    if (ret != ESP_OK) {
@@ -40,6 +46,13 @@ esp_err_t set_gpio(int pinNum, int value)
 // This function will set a specified gpio pin to output mode with pull_down enabled
 esp_err_t set_gpio_to_output(int pinNum)
 {
+    // Check if GPIO pin is valid
+    if (!GPIO_IS_VALID_GPIO(pinNum)) {
+        ESP_LOGE("GPIO_DRIVER", "Invalid GPIO pin number: %d", pinNum);
+        return ESP_ERR_INVALID_ARG;
+    }
+
+
     // First set up config structure
     gpio_config_t output_config = {};
     output_config.intr_type = GPIO_INTR_DISABLE; // Disable interrupts
@@ -61,6 +74,12 @@ esp_err_t set_gpio_to_output(int pinNum)
 
 esp_err_t set_gpio_to_input(int pinNum, bool pullDownEn, bool pullUpEn, gpio_int_type_t intrType)
 {
+    // Check if GPIO pin is valid
+    if (!GPIO_IS_VALID_GPIO(pinNum)) {
+        ESP_LOGE("GPIO_DRIVER", "Invalid GPIO pin number: %d", pinNum);
+        return ESP_ERR_INVALID_ARG;
+    }
+
     // Very similar to output mode function
     gpio_config_t input_config = {};
     input_config.intr_type = intrType;  // Configurable interrupt type
@@ -82,5 +101,11 @@ esp_err_t set_gpio_to_input(int pinNum, bool pullDownEn, bool pullUpEn, gpio_int
 // This function will be a wrapper for the esp32 api function
 bool get_gpio_value(int pinNum) 
 {
+    // Check if GPIO pin is valid
+    if (!GPIO_IS_VALID_GPIO(pinNum)) {
+        ESP_LOGE("GPIO_DRIVER", "Invalid GPIO pin number: %d", pinNum);
+        return ESP_ERR_INVALID_ARG;
+    }
+
     return (bool)gpio_get_level(pinNum);
 }

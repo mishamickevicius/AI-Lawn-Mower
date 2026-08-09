@@ -13,7 +13,8 @@ static const char* TAG = "IrSensor";
 #define ESP_INTR_FLAG_DEFAULT 0
 #define IR_SENSOR_DEBOUNCE_MS 50
 
-
+// This will be set to true once all things like queue, ISR install are done
+static bool setupRan = false;
 
 /* 
 --------------------------------------------
@@ -29,17 +30,13 @@ static QueueHandle_t sIrSensorEvtQueue = NULL;
 static TaskHandle_t sIrSensorTaskHandle = NULL;
 
 
-// Stores the number of pins
-static size_t sNumIrSensorsInternal = 0;
-
 // --- Internal ISR Handler
 // This function runs in interrupt context. Keep it as short as possible.
 // Its main job is to send the GPIO number to the queue.
 // IRAM_ATTR tells the mcu to place this function into IRAM not Flash memory
 static void IRAM_ATTR ir_sensor_isr_handler(void* arg)
 {
-    uint32_t pinNum = (uint32_t) arg; // This casts the arg to an int and stores it
-    xQueueSendFromISR(sIrSensorEvtQueue, &pinNum, NULL);
+
 }
 
 // --- Internal Processing Task ---
@@ -61,106 +58,12 @@ This task will push state changes to the central queue
 */
 static void ir_sensor_processing_task(void* arg)
 {
-    uint32_t pinNum; // Holder var for pin num
-    for (;;) {
-        if (xQueueReceive(sIrSensorEvtQueue, &pinNum, portMAX_DELAY) == pdTRUE) 
-        {
-            ESP_LOGI(TAG, "Event recieved by task --- pin num: %d", (int)pinNum);
-            int index = 35 - (int) pinNum; // Pin 35 is the first avalible pin therefore 35-35 = 0 index
-            TickType_t currentTicks = xTaskGetTickCount();
-            TickType_t debounceThreshold = pdMS_TO_TICKS(IR_SENSOR_DEBOUNCE_MS);
-            int currentRawLevel;
-            // FSM Logic
-            switch (sIrSensorsData[index].currentState)
-            {
-                case IR_STATE_INIT:
-                    if (gpio_get_level(pinNum) == 1) { 
-                        sIrSensorsData[index].currentState = IR_STATE_STABLE_CLEAN;
-                        ESP_LOGI(TAG, "Sensor %d (GPIO %d): Initial state -> STABLE_CLEAN", index, (int)pinNum);
-                    } else {
-                        sIrSensorsData[index].currentState = IR_STATE_STABLE_DETECTED;
-                        ESP_LOGI(TAG, "Sensor %d (GPIO %d): Initial state -> STABLE_DETECTED", index, (int)pinNum);
-                    }
-                    ESP_LOGI(TAG, "Updating lastLevelChangeTime");
-                    sIrSensorsData[index].lastLevelChangeTime = currentTicks;
-                    sIrSensorsData[index].previousLevel = gpio_get_level(pinNum);
-                    break;
-                
-                case IR_STATE_DEBOUNCING_CLEAN:
-                    currentRawLevel = gpio_get_level(pinNum);
 
-                    if (currentRawLevel == 1) { // If the level is still high
-                        if ((currentTicks - sIrSensorsData[index].lastLevelChangeTime) >= debounceThreshold) {
-                            sIrSensorsData[index].currentState = IR_STATE_STABLE_CLEAN;
-                            sIrSensorsData[index].previousLevel = 1;
-                            ESP_LOGI(TAG, "Sensor %d (GPIO %d): DEBOUNCING_CLEAN -> STABLE_CLEAN", index, (int)pinNum);
-                        } else { // Haven't met the debounce threshold
-                            // Do nothing
-                        }
-                    } else { // Level went to low -- This is a bounce
-                        sIrSensorsData[index].currentState = IR_STATE_DEBOUNCING_DETECTED; // Transition to debouncing the 'detected' state
-                        ESP_LOGI(TAG, "Updating lastLevelChangeTime");
-                        sIrSensorsData[index].lastLevelChangeTime = currentTicks;
-                        // ONLY set the previousLevel once its determinded to be a stable level
-                        ESP_LOGI(TAG, "Sensor %d (GPIO %d): DEBOUNCING_CLEAN -> DEBOUNCING_DETECTED", index, (int)pinNum);
-                    }
-                    break;
-                
-                case IR_STATE_DEBOUNCING_DETECTED:
-                    currentRawLevel = gpio_get_level(pinNum);
-
-                    if (currentRawLevel == 0) {
-                        if ((currentTicks - sIrSensorsData[index].lastLevelChangeTime) >= debounceThreshold) {
-                            sIrSensorsData[index].currentState = IR_STATE_STABLE_DETECTED;
-                            sIrSensorsData[index].previousLevel = 0;
-                            ESP_LOGI(TAG, "Sensor %d (GPIO %d): DEBOUNCING_DETECTED -> STABLE_DETECTED", index, (int)pinNum);
-                        } else {
-                            // Do Nothing
-                        }
-                    } else { // Level went High, this is a bounce
-                        sIrSensorsData[index].currentState = IR_STATE_DEBOUNCING_CLEAN;
-                        ESP_LOGI(TAG, "Updating lastLevelChangeTime");
-                        sIrSensorsData[index].lastLevelChangeTime = currentTicks;
-                        ESP_LOGI(TAG, "Sensor %d (GPIO %d): DEBOUNCING_DETECTED -> DEBOUNCING_CLEAN", index, (int)pinNum);
-                    }
-                    break;
-                
-                case IR_STATE_STABLE_CLEAN:
-                    currentRawLevel = gpio_get_level(pinNum);
-
-                    if (currentRawLevel == 0) {
-                        sIrSensorsData[index].currentState = IR_STATE_DEBOUNCING_DETECTED;
-                        ESP_LOGI(TAG, "Updating lastLevelChangeTime");
-                        sIrSensorsData[index].lastLevelChangeTime = currentTicks;
-                        ESP_LOGI(TAG, "Sensor %d (GPIO %d): STABLE_CLEAN -> DEBOUNCING_DETECTED", index, (int)pinNum);
-                    }
-                    // Don't need to do anything if level == 1
-                    break;
-                
-                case IR_STATE_STABLE_DETECTED:
-                    currentRawLevel = gpio_get_level(pinNum);
-
-                    if (currentRawLevel == 1) {
-                        sIrSensorsData[index].currentState = IR_STATE_DEBOUNCING_CLEAN;
-                        ESP_LOGI(TAG, "Updating lastLevelChangeTime");
-                        sIrSensorsData[index].lastLevelChangeTime = currentTicks;
-                        ESP_LOGI(TAG, "Sensor %d (GPIO %d): STABLE_DETECTED -> DEBOUNCING_CLEAN", index, (int)pinNum);
-                    }
-                    // Don't need to do anything if level == 0
-                    break;
-            }
-        }
-    }
 }
 
-// --- Public Initialization Function ---
-// This is the public api function to be called by main.c
-// SHOULD ONLY BE CALLED ONCE PER RUNTIME
-esp_err_t ir_sensor_init(ir_sensor_data_t* irSensorArr, int numOfSensors)
+esp_err_t full_ir_init()
 {
-    esp_err_t ret;
     sIrSensorEvtQueue = xQueueCreate(10, sizeof(uint32_t)); // Create the queue
-    // Check for err
     if (sIrSensorEvtQueue == NULL) {
         ESP_LOGE(TAG, "Failed to create IR Sensor event queue");
         return ESP_FAIL;
@@ -179,45 +82,66 @@ esp_err_t ir_sensor_init(ir_sensor_data_t* irSensorArr, int numOfSensors)
         return ESP_FAIL;
     } 
 
-    // Add to static vars
-    sNumIrSensorsInternal = (size_t)numOfSensors;
-    // Copy data from the caller's array to our internal static array
-    for (int i = 0; i < numOfSensors; i++) {
-        // This line performs the element-by-element copy
-        sIrSensorsData[i] = irSensorArr[i]; // Copies the entire struct content
-    }
-    
     // Install isr service
-    ret = gpio_install_isr_service(ESP_INTR_FLAG_DEFAULT);
+    esp_err_t ret = gpio_install_isr_service(ESP_INTR_FLAG_DEFAULT);
     if (ret != ESP_OK && ret != ESP_ERR_INVALID_STATE) { //ESP_ERR_INVALID_STATE means already installed
-        ESP_LOGE(TAG, "Failed to install GPIO ISR Service Error: %s", esp_err_to_name(ret));
+        ESP_LOGE(TAG, "Failed to install GPIO ISR Service Error in full_ir_init: %s", esp_err_to_name(ret));
         vQueueDelete(sIrSensorEvtQueue);
         vTaskDelete(sIrSensorTaskHandle);
         return ret;
-    }    
-    // If it was ESP_ERR_INVALID_STATE, it means another component already installed it, which is fine.
+    }   
     if (ret == ESP_OK) {
         ESP_LOGI(TAG, "GPIO ISR service installed.");
     } else if (ret == ESP_ERR_INVALID_STATE) {
         ESP_LOGI(TAG, "GPIO ISR service already installed.");
     }
 
-    // Add the isr_handler to each gpio pinCan 
-    for (int i = 0; i < numOfSensors; i++) {
-        ret = gpio_isr_handler_add(irSensorArr[i].pinNum, ir_sensor_isr_handler, (void*)irSensorArr[i].pinNum);
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "ir_sensor_init error when adding handler to pin num: %d\n error: %s",
-                     irSensorArr[i].pinNum,
-                    esp_err_to_name(ret));
-            vQueueDelete(sIrSensorEvtQueue);
-            vTaskDelete(sIrSensorTaskHandle);
 
-            return ret;
-        }
-        gpio_intr_enable(irSensorArr[i].pinNum);
-        // gpio_dump_io_configuration(stdout, (1ULL << irSensorArr[i].pinNum));
-        ESP_LOGI(TAG, "Configured IR Sensor on GPIO %d with ISR.", irSensorArr[i].pinNum);
+    setupRan = true;
+    return ESP_OK;
+}
+
+
+// --- Public Initialization Function ---
+// This is the public api function to be called by main.c
+// SHOULD ONLY BE CALLED ONCE PER RUNTIME
+// This will set the GPIO pin to input and setup the sensorData var
+esp_err_t ir_sensor_init(int pinNum, ir_sensor_data_t* sensorData)
+{
+    esp_err_t ret;
+    if (!setupRan) {
+        ret = full_ir_init();
+        if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Error has occured with full_ir_init\n Error: %s\n", esp_err_to_name(ret));
+            return ret;  // Return the error given
     }
-    ESP_LOGI(TAG, "IR Sensor component initialized successfully with %d sensors.", numOfSensors);
+    }
+    // Check for null ptr
+    if (sensorData == NULL)
+    {
+        ESP_LOGE(TAG, "sensorData pointer is NULL");
+        return ESP_ERR_INVALID_ARG;
+    }
+
+    ret = set_gpio_to_input(pinNum, false, false, GPIO_INTR_ANYEDGE);
+
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Error has occured with ir_sensor_init\n Error: %s\n", esp_err_to_name(ret));
+        return ret;  // Return the error given
+    }
+
+    ret = gpio_isr_handler_add(pinNum, ir_sensor_isr_handler, (void *)pinNum);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "ir_sensor_init error when adding handler to pin num: %d\n error: %s",
+                pinNum,
+                esp_err_to_name(ret));
+        return ret;
+    }
+
+    sensorData->pinNum = pinNum;
+    sensorData->currentState = IR_STATE_INIT;
+    sensorData->lastLevelChangeTime = xTaskGetTickCount();
+    sensorData->previousLevel = get_gpio_value(pinNum);
+    
     return ESP_OK;
 }

@@ -7,7 +7,7 @@
 
 // State names enumerated 
 typedef enum {
-    IR_STATE_INIT,
+    IR_STATE_INIT = 0,
     IR_STATE_STABLE_DETECTED,
     IR_STATE_DEBOUNCING_CLEAN,
     IR_STATE_STABLE_CLEAN,
@@ -24,9 +24,9 @@ typedef struct {
 } ir_sensor_data_t;
 
 
-ir_sensor_data_t* create_ir_sensor_array(int numOfSensors);
-
-// ISR Function
-esp_err_t ir_sensor_init(ir_sensor_data_t* irSensorArr, int numOfSensors);
+// Initalize the gpio pin and set up data var
+esp_err_t ir_sensor_init(int pinNum, ir_sensor_data_t* sensorData);
+// Initialize the event queue, install isr, update static vars
+esp_err_t full_ir_init();
 
 #endif

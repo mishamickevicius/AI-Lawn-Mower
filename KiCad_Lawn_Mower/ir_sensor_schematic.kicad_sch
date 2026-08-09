@@ -138,6 +138,162 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:C_Small"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Small"
+				(at 0.254 -2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Unpolarized capacitor, small symbol"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "capacitor cap"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_Small_0_1"
+				(polyline
+					(pts
+						(xy -1.524 0.508) (xy 1.524 0.508)
+					)
+					(stroke
+						(width 0.3048)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
+					)
+					(stroke
+						(width 0.3302)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_Small_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 2.032)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 2.032)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+3.3V"
 			(power global)
 			(pin_numbers
@@ -393,6 +549,54 @@
 			(embedded_fonts no)
 		)
 	)
+	(junction
+		(at 102.87 57.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "038b1ea7-1026-4431-8211-f2f36bf02f25")
+	)
+	(junction
+		(at 154.94 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "36e71379-5c9c-4692-a05d-999012843d0d")
+	)
+	(junction
+		(at 102.87 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7cb56d0a-a310-4d57-bf32-6840e20203d7")
+	)
+	(junction
+		(at 154.94 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8cfa9b41-09db-4007-b5cd-0387bbf3ff53")
+	)
+	(junction
+		(at 102.87 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "95f3c5e1-8ae8-4a61-a1d8-8c97a2aab446")
+	)
+	(junction
+		(at 154.94 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a26fd73b-0126-45dc-aff2-9d46ccc84143")
+	)
+	(junction
+		(at 154.94 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c38859b9-7459-4389-b159-3bff3c578faf")
+	)
+	(junction
+		(at 102.87 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cc0efe75-e287-45f4-8164-48f64f275b4d")
+	)
 	(wire
 		(pts
 			(xy 121.92 59.69) (xy 128.27 59.69)
@@ -415,23 +619,13 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 58.42) (xy 102.87 54.61)
+			(xy 102.87 58.42) (xy 102.87 57.15)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "0b290f35-1469-456f-b823-15e063c4d93c")
-	)
-	(wire
-		(pts
-			(xy 102.87 85.09) (xy 102.87 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "19b43c92-e8b4-4123-994e-4c3bce7ae2eb")
 	)
 	(wire
 		(pts
@@ -455,7 +649,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 57.15) (xy 154.94 53.34)
+			(xy 154.94 57.15) (xy 154.94 55.88)
 		)
 		(stroke
 			(width 0)
@@ -465,7 +659,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 59.69) (xy 154.94 63.5)
+			(xy 154.94 59.69) (xy 154.94 60.96)
 		)
 		(stroke
 			(width 0)
@@ -505,7 +699,37 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 60.96) (xy 102.87 64.77)
+			(xy 102.87 83.82) (xy 102.87 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38b75f6f-f9bf-476d-b579-0b6f32e19766")
+	)
+	(wire
+		(pts
+			(xy 102.87 62.23) (xy 102.87 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "43f38ddc-024e-43b9-b65a-15c399165a5a")
+	)
+	(wire
+		(pts
+			(xy 100.33 62.23) (xy 102.87 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44043671-3906-4f5b-ba5b-5487fb94e7cb")
+	)
+	(wire
+		(pts
+			(xy 102.87 60.96) (xy 102.87 62.23)
 		)
 		(stroke
 			(width 0)
@@ -525,6 +749,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 81.28) (xy 102.87 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c77ee9d-124c-4ddc-b742-1ced44536948")
+	)
+	(wire
+		(pts
 			(xy 121.92 86.36) (xy 128.27 86.36)
 		)
 		(stroke
@@ -535,13 +769,53 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 87.63) (xy 102.87 91.44)
+			(xy 154.94 60.96) (xy 154.94 63.5)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "64f3b271-5be6-483b-9bfa-8332d176b80d")
+		(uuid "5084de70-1ce8-49e6-b2f0-5a44bb53b100")
+	)
+	(wire
+		(pts
+			(xy 100.33 88.9) (xy 102.87 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c78cc77-3131-4caa-b283-77024c1cb66a")
+	)
+	(wire
+		(pts
+			(xy 102.87 57.15) (xy 102.87 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "623b65aa-202b-4e72-8782-de882edca9f4")
+	)
+	(wire
+		(pts
+			(xy 100.33 83.82) (xy 102.87 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7532b420-e95e-4d24-8be3-ce21ab21300e")
+	)
+	(wire
+		(pts
+			(xy 154.94 88.9) (xy 154.94 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c99b9ce-cd8a-4d9f-b26e-1d51b9034db9")
 	)
 	(wire
 		(pts
@@ -555,6 +829,26 @@
 	)
 	(wire
 		(pts
+			(xy 152.4 88.9) (xy 154.94 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9503fec9-3868-4557-978a-2861f7035aba")
+	)
+	(wire
+		(pts
+			(xy 152.4 60.96) (xy 154.94 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "957f9668-3221-48a3-ad2f-c34212babff0")
+	)
+	(wire
+		(pts
 			(xy 173.99 58.42) (xy 180.34 58.42)
 		)
 		(stroke
@@ -565,7 +859,57 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 85.09) (xy 154.94 81.28)
+			(xy 154.94 83.82) (xy 154.94 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0ec3b31-d55e-4948-8509-b84acefd824b")
+	)
+	(wire
+		(pts
+			(xy 102.87 87.63) (xy 102.87 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4ff3bc9-1231-43f3-b429-d88b3d3d8167")
+	)
+	(wire
+		(pts
+			(xy 102.87 88.9) (xy 102.87 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7386bbc-204e-495e-aa95-b563907c4bb9")
+	)
+	(wire
+		(pts
+			(xy 100.33 57.15) (xy 102.87 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "baeebfe0-e812-411b-b83f-75d9099be7b7")
+	)
+	(wire
+		(pts
+			(xy 152.4 55.88) (xy 154.94 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c28b042d-aafa-430d-b156-56c99b1539b6")
+	)
+	(wire
+		(pts
+			(xy 154.94 85.09) (xy 154.94 83.82)
 		)
 		(stroke
 			(width 0)
@@ -575,13 +919,33 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 87.63) (xy 154.94 91.44)
+			(xy 154.94 55.88) (xy 154.94 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd48e86c-a723-4e10-9f53-14045e0b8536")
+	)
+	(wire
+		(pts
+			(xy 154.94 87.63) (xy 154.94 88.9)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "de480e5c-0e82-4c8f-8a78-fab546dfbac0")
+	)
+	(wire
+		(pts
+			(xy 152.4 83.82) (xy 154.94 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f20ada3c-c991-425d-99a7-955810e71d84")
 	)
 	(wire
 		(pts
@@ -665,7 +1029,7 @@
 			)
 		)
 	)
-	(global_label "GPIO0"
+	(global_label "GPIO4"
 		(shape input)
 		(at 128.27 86.36 0)
 		(fields_autoplaced yes)
@@ -1055,6 +1419,87 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small")
+		(at 152.4 86.36 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "484f8614-536e-473b-ba04-eca9a50edc9f")
+		(property "Reference" "C3"
+			(at 144.272 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 144.272 87.63 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 152.4 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d1b2d32e-5d49-47de-bb67-0d298d5354b6")
+		)
+		(pin "1"
+			(uuid "12bb6833-ef8a-4e7a-a697-6f6ca5bbcf44")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Custom_symbols:IR_Sensor_FC51")
 		(at 115.57 55.88 0)
 		(unit 1)
@@ -1293,6 +1738,87 @@
 			(project "KiCad_Lawn_Mower"
 				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 152.4 58.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9cdfad9f-aa10-46d5-966f-0e6aefa76e63")
+		(property "Reference" "C2"
+			(at 144.78 56.896 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 144.78 59.436 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 152.4 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "5f880239-9c14-49e2-a439-c618e5719d4f")
+		)
+		(pin "1"
+			(uuid "4333cfc6-7fd8-44aa-bafe-aa3bb4eeb8d7")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -1616,6 +2142,87 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small")
+		(at 100.33 86.36 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "de9f5b55-5d63-4368-8614-1c7581c8e50d")
+		(property "Reference" "C4"
+			(at 96.012 84.836 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 93.98 88.138 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "95ccd6ad-798e-4700-bc8b-93d53ea726fc")
+		)
+		(pin "2"
+			(uuid "d99d707b-ac6c-424a-ada4-d502de9d49c3")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 154.94 63.5 0)
 		(unit 1)
@@ -1688,6 +2295,87 @@
 			(project "KiCad_Lawn_Mower"
 				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
 					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 100.33 59.69 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f8f74a00-3ea6-4834-8d19-5d711a07e895")
+		(property "Reference" "C1"
+			(at 92.964 58.166 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 92.964 60.706 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 100.33 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 100.33 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "36bc0008-56d4-4bbb-808a-e115afa1929e")
+		)
+		(pin "2"
+			(uuid "72ea305c-bfc9-480c-959e-589f1aa84fab")
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964/59b9aee8-2e22-46e8-92f2-019218b8f401"
+					(reference "C1")
 					(unit 1)
 				)
 			)

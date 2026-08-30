@@ -15,6 +15,7 @@ idf_component_register(
         "gpio_driver"
         "ir_sensor"
         "motor_control"
+        "rpi_connector"
         # List any other ESP-IDF components main.c directly uses, e.g.:
         # nvs_flash
 

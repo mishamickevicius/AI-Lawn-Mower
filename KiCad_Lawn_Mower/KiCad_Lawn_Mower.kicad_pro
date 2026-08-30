@@ -429,7 +429,7 @@
         "uuid": "0806a8c0-bc45-48da-a5f3-b40d8c386964"
       }
     ],
-    "used_designators": "#PWR1-11,U1-5,C1-4",
+    "used_designators": "#PWR1-12,U1-5,C1-4,J1",
     "variants": []
   },
   "sheets": [
@@ -444,6 +444,10 @@
     [
       "c4f33eb8-2375-453d-950a-d6c12990af3d",
       "ESP32 Pinout"
+    ],
+    [
+      "98cd4cbf-f54d-45b6-b8ca-61dd8391264b",
+      "RPi4"
     ]
   ],
   "text_variables": {},

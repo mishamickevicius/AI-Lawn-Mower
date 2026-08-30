@@ -39,6 +39,16 @@
 		)
 		(uuid "5e73e620-4974-48fc-850b-8186d6e7098c")
 	)
+	(text "RPi4"
+		(exclude_from_sim no)
+		(at 74.168 153.67 0)
+		(effects
+			(font
+				(size 6.985 6.985)
+			)
+		)
+		(uuid "c1435f38-45a9-4b76-b5e9-d9ec5c2ccba3")
+	)
 	(text "ESP32-S3"
 		(exclude_from_sim no)
 		(at 153.67 98.806 0)
@@ -91,6 +101,52 @@
 			(project "KiCad_Lawn_Mower"
 				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964"
 					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 44.45 137.16)
+		(size 57.15 33.02)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "98cd4cbf-f54d-45b6-b8ca-61dd8391264b")
+		(property "Sheetname" "RPi4"
+			(at 44.45 136.4484 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "RPi4.kicad_sch"
+			(at 44.45 170.7646 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "KiCad_Lawn_Mower"
+				(path "/0806a8c0-bc45-48da-a5f3-b40d8c386964"
+					(page "4")
 				)
 			)
 		)

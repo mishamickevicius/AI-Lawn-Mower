@@ -12,6 +12,7 @@ static const char* TAG = "IrSensor";
 
 #define ESP_INTR_FLAG_DEFAULT 0
 #define IR_SENSOR_DEBOUNCE_MS 50
+#define IR_SENSOR_COUNT 4
 
 // This will be set to true once all things like queue, ISR install are done
 static bool setupRan = false;
@@ -29,6 +30,14 @@ static QueueHandle_t sIrSensorEvtQueue = NULL;
 // This stores the handle(indentifier) of the FreeRTOS task that processes events
 static TaskHandle_t sIrSensorTaskHandle = NULL;
 
+// Array that holds pointers to IR sensor data
+static ir_sensor_data_t *sIrSensorsData[IR_SENSOR_COUNT];
+
+ir_sensor_data_t* grab_ir_sensor_data(int pinNum)
+{
+    return sIrSensorsData[pinNum - 1];
+}
+
 
 // --- Internal ISR Handler
 // This function runs in interrupt context. Keep it as short as possible.
@@ -36,7 +45,15 @@ static TaskHandle_t sIrSensorTaskHandle = NULL;
 // IRAM_ATTR tells the mcu to place this function into IRAM not Flash memory
 static void IRAM_ATTR ir_sensor_isr_handler(void* arg)
 {
+    uint32_t gpio_num = (uint32_t) arg;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    // Send event to queue
+    xQueueSendFromISR(sIrSensorEvtQueue, &gpio_num, &xHigherPriorityTaskWoken);
 
+    if (xHigherPriorityTaskWoken == pdTRUE)
+    {
+        portYIELD_FROM_ISR();
+    }
 }
 
 // --- Internal Processing Task ---
@@ -58,7 +75,79 @@ This task will push state changes to the central queue
 */
 static void ir_sensor_processing_task(void* arg)
 {
+    uint32_t pin_num;
+    while (true)
+    {
+        if (xQueueReceive(sIrSensorEvtQueue, &pin_num, pdMS_TO_TICKS(10)) == pdTRUE)
+        {
+            if (pin_num >= 48) {
+                ESP_LOGE(TAG, "Invalid pin number");
+                continue;
+            }
+            ir_sensor_data_t* sensorData = grab_ir_sensor_data(pin_num);
+            bool currentLevel = get_gpio_value(pin_num);
+            switch (sensorData->currentState)
+            {
+            case IR_STATE_INIT:
+                if (currentLevel) {
+                    sensorData->currentState = IR_STATE_STABLE_CLEAN;
+                    ESP_LOGI(TAG, "Changed state from IR_STATE_INIT to IR_STATE_STABLE_CLEAN");
+                } else {
+                    sensorData->currentState = IR_STATE_STABLE_DETECTED;
+                    ESP_LOGI(TAG, "Changed state from IR_STATE_INIT to IR_STATE_STABLE_DETECTED");
+                }
+                break;
 
+            case IR_STATE_STABLE_DETECTED:
+                if (currentLevel) {
+                    sensorData->currentState = IR_STATE_DEBOUNCING_CLEAN;
+                    sensorData->lastLevelChangeTime = xTaskGetTickCount();
+                    ESP_LOGI(TAG, "Changed state from IR_STATE_STABLE_DETECTED to IR_STATE_DEBOUNCING_CLEAN");
+                }
+                // If 0 then stay in state
+                break;
+            
+            case IR_STATE_STABLE_CLEAN:
+                if (!currentLevel) {
+                    sensorData->currentState = IR_STATE_DEBOUNCING_DETECTED;
+                    sensorData->lastLevelChangeTime = xTaskGetTickCount();
+                    ESP_LOGI(TAG, "Changed state from IR_STATE_STABLE_CLEAN to IR_STATE_DEBOUNCING_DETECTED");
+                }
+                break;
+
+            default:
+                break;
+            }
+            sensorData->previousLevel = currentLevel;
+        }
+
+        // Time Evaluation
+        // Sweep through sensors to see if there are any waiting for delay to finish
+        TickType_t currentTicks = xTaskGetTickCount();    
+
+        for (int i = 0; i < IR_SENSOR_COUNT; i++)
+        {
+            ir_sensor_data_t* sensor = sIrSensorsData[i];
+            if (sensor == NULL) continue;
+
+            if (sensor->currentState == IR_STATE_DEBOUNCING_CLEAN ||
+                sensor->currentState == IR_STATE_DEBOUNCING_DETECTED)
+            {
+                // Check if required time has passed since last edge
+                if ((currentTicks - sensor->lastLevelChangeTime) >= pdMS_TO_TICKS(IR_SENSOR_DEBOUNCE_MS))
+                {
+                    // Time has passed and we can assume stable level
+                    bool stableLevel = get_gpio_value(sensor->pinNum);
+
+                    if (stableLevel) {
+                        sensor->currentState = IR_STATE_STABLE_CLEAN;
+                    } else {
+                        sensor->currentState = IR_STATE_STABLE_DETECTED;
+                    }
+                }
+            }
+        }
+    }
 }
 
 esp_err_t full_ir_init()
@@ -142,6 +231,7 @@ esp_err_t ir_sensor_init(int pinNum, ir_sensor_data_t* sensorData)
     sensorData->currentState = IR_STATE_INIT;
     sensorData->lastLevelChangeTime = xTaskGetTickCount();
     sensorData->previousLevel = get_gpio_value(pinNum);
+    sIrSensorsData[pinNum - 1] = sensorData;
     
     return ESP_OK;
 }

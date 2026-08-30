@@ -46,7 +46,7 @@ while True:
                 # get the class name
                 class_name = classes_names[cls]
 
-                # get the respective colour
+                # get the respective color
                 colour = getColours(cls)
 
                 # draw the rectangle

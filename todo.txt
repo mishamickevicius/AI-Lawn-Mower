@@ -1,0 +1,5 @@
+- IR sensor state machine implementation
+- IR sensor state machine testing(in lab)
+- Plan out AI Brain
+- Look into Extended Kalman Filter (EKF) to smooth out GPS and IMU data
+- Install RPI OS Lite and set up ssh + wifi

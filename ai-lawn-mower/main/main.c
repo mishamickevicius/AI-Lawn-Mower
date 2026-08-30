@@ -32,11 +32,10 @@ void app_main(void)
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Error has occured with IR Sensor 1 init\n Error: %s\n", esp_err_to_name(ret));
     }
-    
-    
 
     while(true)
     {
-        
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        ESP_LOGI(TAG, "Current IR Sensor state: %d", irSensor1Data.currentState);
     }
 }

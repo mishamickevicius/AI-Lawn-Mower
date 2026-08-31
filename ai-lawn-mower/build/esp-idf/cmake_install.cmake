@@ -734,6 +734,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/main/cmake_install.cmake")
 endif()
 

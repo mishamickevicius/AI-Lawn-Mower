@@ -2,7 +2,7 @@ import serial
 import time
 
 PORT = '/dev/serial0'
-BAUDRATE = 115_200  # Adjust back to 921600 if your setup handles high-speed mini-UART reliably
+BAUDRATE = 115_200
 
 ser = serial.Serial(
     port=PORT,
@@ -10,8 +10,14 @@ ser = serial.Serial(
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
-    timeout=0.5
+    timeout=0.2
 )
+
+# Benchmark statistics
+tx_count = 0
+rx_count = 0
+lost_count = 0
+rtts = []
 
 try:
     print(f"Connected to: {ser.name} at {BAUDRATE} baud")
@@ -19,22 +25,62 @@ try:
     ser.reset_output_buffer()
 
     while True:
-        # 1. Send data
-        ser.write(b"Hello from Raspberry Pi 4!\n")
-        print("Data sent.")
+        tx_count += 1
+        msg = f"PING:{tx_count}\n"
+        
+        # 1. Transmit with timestamp
+        t_send = time.perf_counter()
+        ser.write(msg.encode('utf-8'))
 
-        # 2. Listen for incoming data for the remainder of the 1-second interval
-        start_time = time.time()
-        while time.time() - start_time < 1.0:
+        # 2. Wait for response with round-trip measurement
+        received = False
+        deadline = t_send + 1.0  # 1-second budget per cycle
+
+        while time.perf_counter() < deadline:
             if ser.in_waiting > 0:
                 raw_data = ser.readline()
                 decoded = raw_data.decode('utf-8', errors='replace').strip()
+                
                 if decoded:
-                    print(f"Received: {decoded}")
-            time.sleep(0.02)
+                    t_recv = time.perf_counter()
+                    rtt_ms = (t_recv - t_send) * 1000.0
+                    rtts.append(rtt_ms)
+                    rx_count += 1
+                    received = True
+                    
+                    packet_loss = (lost_count / tx_count) * 100
+                    avg_rtt = sum(rtts) / len(rtts)
+                    
+                    print(
+                        f"[TX #{tx_count:04d}] -> Sent | "
+                        f"[RX #{rx_count:04d}] <- \"{decoded}\" | "
+                        f"RTT: {rtt_ms:6.2f} ms (Avg: {avg_rtt:5.2f} ms) | "
+                        f"Loss: {packet_loss:4.1f}%"
+                    )
+                    break
+            time.sleep(0.005)
+
+        if not received:
+            lost_count += 1
+            packet_loss = (lost_count / tx_count) * 100
+            print(f"[TX #{tx_count:04d}] -> Sent | TIMEOUT / PACKET LOST | Loss: {packet_loss:4.1f}%")
+
+        # Sleep remainder of the 1-second slot
+        remaining = deadline - time.perf_counter()
+        if remaining > 0:
+            time.sleep(remaining)
 
 except KeyboardInterrupt:
-    print("\nProgram stopped by user.")
+    print("\n\n--- Final Benchmark Summary ---")
+    if tx_count > 0:
+        loss_pct = (lost_count / tx_count) * 100
+        avg_rtt = sum(rtts) / len(rtts) if rtts else 0
+        min_rtt = min(rtts) if rtts else 0
+        max_rtt = max(rtts) if rtts else 0
+        print(f"Packets Transmitted : {tx_count}")
+        print(f"Packets Received    : {rx_count}")
+        print(f"Packets Dropped     : {lost_count} ({loss_pct:.2f}%)")
+        print(f"Latency Min/Avg/Max : {min_rtt:.2f} ms / {avg_rtt:.2f} ms / {max_rtt:.2f} ms")
 
 finally:
     ser.close()

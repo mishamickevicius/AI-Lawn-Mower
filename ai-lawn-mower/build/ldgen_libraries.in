@@ -208,6 +208,8 @@ $<TARGET_FILE:idf::ir_sensor>
 $<TARGET_FILE:__idf_gpio_driver>
 $<TARGET_FILE:idf::motor_control>
 $<TARGET_FILE:__idf_esp_driver_mcpwm>
+$<TARGET_FILE:idf::rpi_connector>
 $<TARGET_FILE:idf::main>
 $<TARGET_FILE:__idf_ir_sensor>
 $<TARGET_FILE:__idf_motor_control>
+$<TARGET_FILE:__idf_rpi_connector>

@@ -1144,6 +1144,13 @@ C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/motor_control/CMakeFiles/l
 C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/motor_control/CMakeFiles/install.dir
 C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/motor_control/CMakeFiles/install/local.dir
 C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/motor_control/CMakeFiles/install/strip.dir
+C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/CMakeFiles/__idf_rpi_connector.dir
+C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/CMakeFiles/edit_cache.dir
+C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/CMakeFiles/rebuild_cache.dir
+C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/CMakeFiles/list_install_components.dir
+C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/CMakeFiles/install.dir
+C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/CMakeFiles/install/local.dir
+C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/rpi_connector/CMakeFiles/install/strip.dir
 C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/main/CMakeFiles/__idf_main.dir
 C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/main/CMakeFiles/edit_cache.dir
 C:/Projects/AI-Lawn-Mower/ai-lawn-mower/build/esp-idf/main/CMakeFiles/rebuild_cache.dir

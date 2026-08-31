@@ -2,7 +2,7 @@
 	(version 20260306)
 	(generator "eeschema")
 	(generator_version "10.0")
-	(uuid "431e8df5-936f-4716-86dc-2c7864e0de4d")
+	(uuid "d4192709-5e9a-4609-8578-8ae4605a241a")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Connector:Raspberry_Pi_4"

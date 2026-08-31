@@ -29,22 +29,26 @@ static void rpi_uart_task(void *pvParameters)
     uint8_t rx_buffer[RX_BUFFER_SIZE];
 
     while (1) {
-        // 1. Read incoming data from the Raspberry Pi (timeout set to 1000 ms)
-        int bytes_received = rpi_uart_receive(rx_buffer, sizeof(rx_buffer) - 1, 1000);
+        // Block up to 100 ms waiting for incoming data from RPi
+        int bytes_received = rpi_uart_receive(rx_buffer, sizeof(rx_buffer) - 1, 100);
 
         if (bytes_received > 0) {
-            rx_buffer[bytes_received] = '\0'; // Null-terminate for string printing
+            rx_buffer[bytes_received] = '\0';
+
+            // Trim trailing \r or \n for clean ESP log output
+            while (bytes_received > 0 && 
+                  (rx_buffer[bytes_received - 1] == '\n' || rx_buffer[bytes_received - 1] == '\r')) {
+                rx_buffer[--bytes_received] = '\0';
+            }
+
             ESP_LOGI(TAG, "Received from RPi (%d bytes): %s", bytes_received, rx_buffer);
 
-            // 2. Respond back to the RPi with an acknowledgment
-            const char *ack_msg = "ESP32 received your message!\n";
-            rpi_uart_send(ack_msg, strlen(ack_msg));
-        } else if (bytes_received == 0) {
-            ESP_LOGD(TAG, "Waiting for data from RPi...");
-        }
+            // Respond back to RPi with matching format + newline
+            char ack_msg[RX_BUFFER_SIZE + 16];
+            int ack_len = snprintf(ack_msg, sizeof(ack_msg), "ESP32_ACK: %s\n", rx_buffer);
 
-        // Short yield to let other tasks run
-        vTaskDelay(pdMS_TO_TICKS(10));
+            rpi_uart_send(ack_msg, ack_len);
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 #include "rpi_connector.h"
 #include "esp_log.h"
 #include "driver/uart.h"
+#include "driver/gpio.h"
 
 static const char* TAG = "RPiConnector";
 
@@ -61,6 +62,10 @@ esp_err_t rpi_uart_init()
     if ((err = set_uart_params()) != ESP_OK) return err;
     if ((err = set_uart_pins()) != ESP_OK) return err;
     if ((err = install_uart_drivers()) != ESP_OK) return err;
+    // To fix and high impedence issues
+    gpio_pullup_en(RX_PIN);
+    gpio_pulldown_dis(RX_PIN);
+    
     return ESP_OK;
 }
 

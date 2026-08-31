@@ -6,5 +6,6 @@ idf_component_register(
     REQUIRES
         "freertos"
         "driver"
-        esp_driver_uart
+        "esp_driver_uart"
+        "esp_driver_gpio"
 )

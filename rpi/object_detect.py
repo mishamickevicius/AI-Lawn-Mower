@@ -1,67 +1,85 @@
 import cv2
+import time
+import torch
+import numpy as np
 from ultralytics import YOLO
 
-# Load the model
-yolo = YOLO('yolov8s.pt')
+## TODO pip install ultralytics opencv-python torch torchvision numpy python3-opencv ## 
 
-# Load the video capture
-videoCap = cv2.VideoCapture(0)
+# 1. Initialize MIPI CSI-2 Camera via GStreamer
+# Grabs frames using the libcamera stack and pipes to OpenCV
+pipeline = (
+    "libcamerasrc ! "
+    "video/x-raw, width=640, height=640, framerate=30/1 ! "
+    "videoconvert ! "
+    "appsink drop=true max-buffers=1"
+)
 
-# Function to get random class colors 
-def getColours(cls_num):
-    base_colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255)]
-    color_index = cls_num % len(base_colors)
-    increments = [(1, -2, 1), (-2, 1, -1), (1, -1, 2)]
-    color = [base_colors[color_index][i] + increments[color_index][i] * 
-    (cls_num // len(base_colors)) % 256 for i in range(3)]
-    return tuple(color)
+cap = cv2.VideoCapture(pipeline, cv2.CAP_GSTREAMER)
+
+# Warm up the camera sensor to allow auto-exposure/white balance to settle
+for _ in range(10):
+    cap.read()
+    
+ret, frame = cap.read()
+cap.release()
+
+if not ret:
+    raise RuntimeError("Failed to capture image. Check camera connection or run with `libcamerify`.")
+
+model_name = "yolov8n.pt"
+print(f"Benchmarking {model_name} on Raspberry Pi CPU...\n")
+
+# ==========================================
+# METHOD 1: ULTRALYTICS PIPELINE
+# ==========================================
+print("--- Method 1: Ultralytics Wrapper ---")
+# The YOLO class automatically downloads weights, handles letterbox preprocessing, and runs Non-Maximum Suppression.
+model_ul = YOLO(model_name)
+
+# Warmup inference (PyTorch builds the computational graph on the first pass)
+_ = model_ul(frame, verbose=False)
+
+start_time = time.time()
+results = model_ul(frame, verbose=False)
+ul_latency = time.time() - start_time
+
+print(f"Inference + Pre/Post-Processing Time: {ul_latency:.4f} seconds")
+print(f"Objects detected: {len(results[0].boxes)}")
 
 
-while True:
-    print("Video read starting")
-    ret, frame = videoCap.read()
-    if not ret:
-        continue
-    print("Tracking Starting")
-    results = yolo.track(frame, stream=True)
+# ==========================================
+# METHOD 2: RAW PYTORCH INFERENCE
+# ==========================================
+print("\n--- Method 2: Raw PyTorch Neural Network ---")
+# Extract the underlying PyTorch nn.Module from the downloaded checkpoint
+ckpt = torch.load(model_name, map_location='cpu', weights_only=False)
+model_pt = ckpt['model'].float().eval()
 
+# Manual Preprocessing Pipeline
+# YOLOv8 expects: RGB format, CHW layout, normalized float32 [0, 1], and a batch dimension.
+# We use a naive 640x640 resize here. (Ultralytics uses dynamic letterboxing to preserve aspect ratio).
+img_resized = cv2.resize(frame, (640, 640))
+img_rgb = cv2.cvtColor(img_resized, cv2.COLOR_BGR2RGB)
+img_chw = np.transpose(img_rgb, (2, 0, 1))
+img_tensor = torch.from_numpy(img_chw).float() / 255.0
+img_tensor = img_tensor.unsqueeze(0) # [1, 3, 640, 640]
 
-    for result in results:
-        print("Got results")
-        # get the classes names
-        classes_names = result.names
+# Warmup inference
+with torch.no_grad():
+    _ = model_pt(img_tensor)
 
-        # iterate over each box
-        for box in result.boxes:
-            # check if confidence is greater than 40 percent
-            if box.conf[0] > 0.4:
-                # get coordinates
-                [x1, y1, x2, y2] = box.xyxy[0]
-                # convert to int
-                x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
+start_time = time.time()
+with torch.no_grad():
+    raw_preds = model_pt(img_tensor)
+pt_latency = time.time() - start_time
 
-                # get the class
-                cls = int(box.cls[0])
+print(f"Pure Forward-Pass Time: {pt_latency:.4f} seconds")
+print(f"Raw Tensor Output Shape: {raw_preds[0].shape}")
 
-                # get the class name
-                class_name = classes_names[cls]
-
-                # get the respective color
-                colour = getColours(cls)
-
-                # draw the rectangle
-                cv2.rectangle(frame, (x1, y1), (x2, y2), colour, 2)
-
-                # put the class name and confidence on the image
-                cv2.putText(frame, f'{classes_names[int(box.cls[0])]} {box.conf[0]:.2f}', (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 1, colour, 2)
-                
-    # show the image
-    cv2.imshow('frame', frame)
-
-    # break the loop if 'q' is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-# release the video capture and destroy all windows
-videoCap.release()
-cv2.destroyAllWindows()
+# ==========================================
+# OVERHEAD COMPARISON
+# ==========================================
+print("\n--- Results ---")
+overhead = (ul_latency - pt_latency) * 1000
+print(f"Ultralytics Wrapper Overhead: {overhead:.2f} ms")
